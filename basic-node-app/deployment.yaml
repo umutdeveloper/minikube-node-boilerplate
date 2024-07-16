@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basicnodeapp-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: basicnodeapp
+  template:
+    metadata:
+      labels:
+        app: basicnodeapp
+    spec:
+      containers:
+      - name: basicnodeapp
+        image: basicnodeapp:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
